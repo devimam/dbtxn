@@ -1,0 +1,28 @@
+How to use this Simulator !!!!
+-------------------------------
+Step 1: 
+Enter the total number of transactions that operates concurrently within a schedule.
+
+For example: 5 (T1, T2, T3, T4, T5)
+
+Step 2:
+Enter the total number of variables the transactions will use.
+
+For example: 4 (A, B, C, D)
+
+Step 3:
+Click the "Start" button and 
+enter the sequence of operations of this schedule.
+
+Step 4:
+Click the "Generate" button to generate the Precedence graph.
+
+Step 5:
+Click the "Check Serializability" button to check the conflict serializability and serial order (if exists).
+
+For serial schedule, it will return the serial order.
+For non-serial schedule, it will return the cycle.
+
+
+Thank you.
+#Enjoy
