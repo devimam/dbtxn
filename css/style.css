@@ -1,0 +1,77 @@
+body{
+    background-image: url('../images/back.jpg');
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#mainbody{
+    background-color: rgba(61,61,92,0.85);
+}
+
+#mainbody>div.row{
+    min-height:100vh;
+}
+
+#left-side{
+    background-color: rgb(224,224,235,0.80);
+}
+
+#schedule{
+    color: #47476b;
+}
+
+#graph-container{
+    height: 70vh;
+    width: 100%;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+  
+    /* border: 1px solid rgb(255,51,51); */
+    box-shadow: 0 2px 4px 0 rgba(255,255,102,0.2), 0 3px 10px 0 rgba(255,255,102,0.19);
+    background-color: rgba(0,0,0,0.3);
+  
+    margin-bottom: 12px;
+}
+
+#collapsesection{
+    background-color: rgba(0,0,0,0.3);
+}
+
+#cardcontent{
+    background-color: rgba(0,0,0,0.3);
+    color:#e0e0eb;
+    border:none;
+}
+
+.footer-cls{
+    padding: 5px;
+    margin-right:30px;
+
+    color: #1affff;
+    display:none;
+
+    position:fixed;
+    bottom: 0;
+    right:0;
+}
+
+.footer-show{
+    font-size:150%;
+    color:white;
+    padding:5px;
+
+    position:fixed;
+    bottom:0;
+    right:0;
+}
+
+.footer-show:hover{
+    color: #1affff;
+}
+
+.footer-show:hover + .footer-cls{
+    display: block;
+}

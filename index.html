@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Database Transaction</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- my css file -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- setting the icon -->
+    <link rel="icon" href="images/icon.png">
+
+    <!-- Integrating sigma.js Module -->
+    <!-- START SIGMA IMPORTS -->
+    <script src="sigmajs/src/sigma.core.js"></script>
+    <script src="sigmajs/src/conrad.js"></script>
+    <script src="sigmajs/src/utils/sigma.utils.js"></script>
+    <script src="sigmajs/src/utils/sigma.polyfills.js"></script>
+    <script src="sigmajs/src/sigma.settings.js"></script>
+    <script src="sigmajs/src/classes/sigma.classes.dispatcher.js"></script>
+    <script src="sigmajs/src/classes/sigma.classes.configurable.js"></script>
+    <script src="sigmajs/src/classes/sigma.classes.graph.js"></script>
+    <script src="sigmajs/src/classes/sigma.classes.camera.js"></script>
+    <script src="sigmajs/src/classes/sigma.classes.quad.js"></script>
+    <script src="sigmajs/src/classes/sigma.classes.edgequad.js"></script>
+    <script src="sigmajs/src/captors/sigma.captors.mouse.js"></script>
+    <script src="sigmajs/src/captors/sigma.captors.touch.js"></script>
+    <script src="sigmajs/src/renderers/sigma.renderers.canvas.js"></script>
+    <script src="sigmajs/src/renderers/sigma.renderers.webgl.js"></script>
+    <script src="sigmajs/src/renderers/sigma.renderers.svg.js"></script>
+    <script src="sigmajs/src/renderers/sigma.renderers.def.js"></script>
+    <script src="sigmajs/src/renderers/webgl/sigma.webgl.nodes.def.js"></script>
+    <script src="sigmajs/src/renderers/webgl/sigma.webgl.nodes.fast.js"></script>
+    <script src="sigmajs/src/renderers/webgl/sigma.webgl.edges.def.js"></script>
+    <script src="sigmajs/src/renderers/webgl/sigma.webgl.edges.fast.js"></script>
+    <script src="sigmajs/src/renderers/webgl/sigma.webgl.edges.arrow.js"></script>
+    <script src="sigmajs/src/renderers/canvas/sigma.canvas.labels.def.js"></script>
+    <script src="sigmajs/src/renderers/canvas/sigma.canvas.hovers.def.js"></script>
+    <script src="sigmajs/src/renderers/canvas/sigma.canvas.nodes.def.js"></script>
+    <script src="sigmajs/src/renderers/canvas/sigma.canvas.edges.def.js"></script>
+    <script src="sigmajs/src/renderers/canvas/sigma.canvas.edges.curve.js"></script>
+    <script src="sigmajs/src/renderers/canvas/sigma.canvas.edges.arrow.js"></script>
+    <script src="sigmajs/src/renderers/canvas/sigma.canvas.edges.curvedArrow.js"></script>
+    <script src="sigmajs/src/renderers/canvas/sigma.canvas.edgehovers.def.js"></script>
+    <script src="sigmajs/src/renderers/canvas/sigma.canvas.edgehovers.curve.js"></script>
+    <script src="sigmajs/src/renderers/canvas/sigma.canvas.edgehovers.arrow.js"></script>
+    <script src="sigmajs/src/renderers/canvas/sigma.canvas.edgehovers.curvedArrow.js"></script>
+    <script src="sigmajs/src/renderers/canvas/sigma.canvas.extremities.def.js"></script>
+    <script src="sigmajs/src/renderers/svg/sigma.svg.utils.js"></script>
+    <script src="sigmajs/src/renderers/svg/sigma.svg.nodes.def.js"></script>
+    <script src="sigmajs/src/renderers/svg/sigma.svg.edges.def.js"></script>
+    <script src="sigmajs/src/renderers/svg/sigma.svg.edges.curve.js"></script>
+    <script src="sigmajs/src/renderers/svg/sigma.svg.labels.def.js"></script>
+    <script src="sigmajs/src/renderers/svg/sigma.svg.hovers.def.js"></script>
+    <script src="sigmajs/src/middlewares/sigma.middlewares.rescale.js"></script>
+    <script src="sigmajs/src/middlewares/sigma.middlewares.copy.js"></script>
+    <script src="sigmajs/src/misc/sigma.misc.animation.js"></script>
+    <script src="sigmajs/src/misc/sigma.misc.bindEvents.js"></script>
+    <script src="sigmajs/src/misc/sigma.misc.bindDOMEvents.js"></script>
+    <script src="sigmajs/src/misc/sigma.misc.drawHovers.js"></script>
+    <!-- END SIGMA IMPORTS -->
+
+    <!-- sigma js plugin for dragging nodes -->
+    <script src="sigmajs/plugins/sigma.plugins.dragNodes/sigma.plugins.dragNodes.js"></script>
+
+    <!-- sigma js plugin for different types of edges -->
+    <script src="sigmajs/plugins/sigma.renderers.edgeLabels/settings.js"></script>
+    <script src="sigmajs/plugins/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.def.js"></script>
+    <script src="sigmajs/plugins/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.curve.js"></script>
+    <script src="sigmajs/plugins/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.curvedArrow.js"></script>
+
+</head>
+
+<body>
+    <!-- the main body section -->
+    <div class="container-fluid" id="mainbody">
+
+        <div class="row">
+
+            <!-- left portion -->
+            <div class="col-lg-6 pb-lg-0 pb-2" id="left-side">
+                <h2 class="text-center pt-3" style="color:#47476b;">Database Transaction Serializability</h2>
+
+                <div class="row align-items-center">
+                    <iframe class="col-auto" src="https://ghbtns.com/github-btn.html?user=devimam&repo=dbtxn&type=star&count=true&size=large" 
+                    frameborder="0" scrolling="0" width="170" height="30" title="Star It">
+                    </iframe>
+
+                    <a href="https://youtu.be/3t-0q8bxAlI" target="_blank" class="col-auto ms-auto"><img src="images/help.png" width="50" height="50"></a>
+                </div>
+
+                <div class="row g-1">
+                    <div class="col-lg-5">
+                        <input type="number" class="form-control" id="no_of_txn"
+                            placeholder="Number of Transactions (Ex: 5)">
+                    </div>
+                    <div class="col-lg-5">
+                        <input type="number" class="form-control" id="no_of_items"
+                            placeholder="Number of Transaction Variables (Ex: 4)">
+                    </div>
+                    <div class="col-lg-2">
+                        <button type="button" class="btn btn-outline-secondary start-btn" style="width:100%;"
+                            id="mybtn">Start</button>
+                    </div>
+                </div>
+                <hr>
+                <div>
+                    <table class="table text-center" id="schedule">
+                        <thead>
+                            <tr id="tbl-head"></tr>
+                        </thead>
+                        <tbody id="tbl-body">
+                            <!-- table content here -->
+                        </tbody>
+                    </table>
+                    <div class="clearfix">
+                        <button type="button" class="btn btn-outline-secondary d-none float-end" id="addrowbtn">Add New
+                            Entry</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- right portion -->
+            <div class="col-lg-6" id="right-side" style="position:relative;">
+                <div class="mb-5">
+                    <h3 class="text-center clearfix py-3" style="color:white;">
+                        Precendence Graph
+                        <button type="button" class="btn btn-outline-light float-end" id="generatebtn"
+                            disabled>Generate</button>
+                    </h3>
+
+                    <!-- sigmajs drawing section -->
+                    <div id="graph-container" title="Draw Here"></div>
+
+                    <!-- serializability check potion -->
+                    <div class="row mb-2">
+                        <button class="btn btn-outline-light col-auto mx-auto" id='serialckbtn' type="button"
+                            data-bs-toggle="collapse" data-bs-target="#collapse-section" disabled>
+                            Check Serializability
+                        </button>
+                    </div>
+
+                    <div class="collapse" id="collapse-section">
+                        <div class="card card-body" id="cardcontent"></div>
+                    </div>
+                </div>
+
+                <!--footer-->
+                <div class="footer-show">&copy;</div>
+                <div class="footer-cls">
+                    MIT License &copy; 2021 <strong>Mohammad Imam Hossain</strong> | Email: <strong><a
+                            href="mailto:imambuet11@gmail.com" style="color:inherit;">imambuet11@gmail.com</a></strong>
+                    | All Rights Reserved
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- my javascript integration -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
