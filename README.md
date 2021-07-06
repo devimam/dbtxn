@@ -1,4 +1,4 @@
-# Database Transaction Serializability
+# Conflict Serializable Schedule
 
 A web based project to easily create Database Schedule, generate corresponding Precedence graph and finally check the serializability of the schedule.
 
